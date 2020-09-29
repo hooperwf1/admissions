@@ -21,21 +21,6 @@ public class Admissions {
 		System.out.print("Residence: ");
 		String res = scanner.nextLine();
 	
-		if(sat < 1200 || rank < 85 || awards < 3 || "Florida".equals(res)){
-			System.out.println("No metrics less than acceptable");	
-			return;
-		} 
-
-		if("Padjen".equals(name)){
-			System.out.println("Accepted - Last Name is Padjen");
-			return;
-		} 
-
-		if((sat >= 1500 || rank >= 95 || awards >= 10 || "Colorado".equals(res))){
-			System.out.println("Accepted - Elite metric");
-			return;
-		}
-
 		int solid = 0;
 		if(sat >= 1400)
 			solid++;	
@@ -44,12 +29,16 @@ public class Admissions {
 		if(awards >= 8)
 			solid++;
 
-		if(solid >= 2){
+		if(sat < 1200 || rank < 85 || awards < 3 || "Florida".equals(res)){
+			System.out.println("No metrics less than acceptable");	
+		} else if("Padjen".equals(name)){
+			System.out.println("Accepted - Last Name is Padjen");
+		} else if((sat >= 1500 || rank >= 95 || awards >= 10 || "Colorado".equals(res))){
+			System.out.println("Accepted - Elite metric");
+		} else if(solid >= 2){
 			System.out.println("Accepted - 2 solid metrics");
-			return;
+		} else {
+			System.out.println("Declined - Get improved metrics");	
 		}
-
-		System.out.println("Declined - Get improved metrics");	
-
 	}	
 }
